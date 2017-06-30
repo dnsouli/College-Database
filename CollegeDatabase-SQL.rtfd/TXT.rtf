@@ -1,0 +1,126 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf820
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
+CREATE TABLE Course ( cid INT NOT NULL, cname CHAR (50) NULL, sid INT NULL, 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 iid INT NULL, PRIMARY KEY (cid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Instructor( iid INT NOT NULL, iname CHAR (50) NULL, 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 age INT NULL, PRIMARY KEY (iid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Student ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 sid integer,\cb1 \uc0\u8232 \cb3 sname CHAR(50) NULL, grade INT NULL, 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 PRIMARY KEY(sid) ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Department ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 did integer,\cb1 \uc0\u8232 \cb3 dname char(50),\cb1 \uc0\u8232 \cb3 iid integer,\cb1 \uc0\u8232 \cb3 cid integer PRIMARY KEY(did) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 )\cb1 \uc0\u8232 \cb3 CREATE TABLE Offer 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 (\cb1 \uc0\u8232 \cb3 cid integer REFERENCES Course,\cb1 \uc0\u8232 \cb3 did integer REFERENCES Department, Primary key(cid, did) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Enroll ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 cid integer REFERENCES Course, sid integer REFERENCES Student, Primary key(cid, sid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Teaches ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 cid integer REFERENCES Course, iid integer REFERENCES Instructor, Primary key(cid, iid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Works_In ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 did integer REFERENCES Department, iid integer REFERENCES Instructor, Primary key(did, iid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 CREATE TABLE Heads ( 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 did integer REFERENCES Department, iid integer REFERENCES Instructor, Primary key(did, iid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 ) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Student (sid, sname, grade) values (210, 'Ashley', 14); insert into Student (sid, sname, grade) values (148, 'Anthony', 13); insert into Student (sid, sname, grade) values (915, 'Clarence', 15); insert into Student (sid, sname, grade) values (428, 'Jennifer', 15); insert into Student (sid, sname, grade) values (388, 'Jerry', 14); insert into Student (sid, sname, grade) values (340, \'91Bill\'92, 14); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Instructor (iid, iname, age) values (1000, 'Jason', 35); insert into Instructor (iid, iname, age) values (2000, 'Matt', 90); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Instructor (iid, iname, age) values (3000, 'Bob', 47); insert into Instructor (iid, iname, age) values (4000, 'Ethan', 62); insert into Instructor (iid, iname, age) values (5000, 'Liam', 29); insert into Instructor (iid, iname, age) values (6000, 'Joe', 42); insert into Instructor (iid, iname, age) values (7000, 'Alfred', 50); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Course (cid, cname, sid, iid) values (22, 'Math 123', 148, 1000); insert into Course (cid, cname, sid, iid) values (25, 'Physics 133', 210, 2000); insert into Course (cid, cname, sid, iid) values (35, 'Biology 101', 388, 3000); insert into Course (cid, cname, sid, iid) values (46, 'History 111', 428, 4000); insert into Course (cid, cname, sid, iid) values (56, 'Chemistry 405', 915, 5000); insert into Course (cid, cname, sid, iid) values (78, 'Database 109', 148, 6000); insert into Course (cid, cname, sid, iid) values (92, 'English 110', 915, 7000); insert into Course (cid, cname, sid, iid) values (12, 'Sociology 120', 915, 7000); insert into Course (cid, cname, sid, iid) values (32, 'Economics 456', 428, 4000); insert into Course (cid, cname, sid, iid) values (41, 'Astronomy 208', 340, 1000); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) insert into Department (did, dname, iid, cid) 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Enroll (cid, sid) values (22, 148); insert into Enroll (cid, sid) values (25, 210); insert into Enroll (cid, sid) values (35, 388); insert into Enroll (cid, sid) values (46, 428); insert into Enroll (cid, sid) values (56, 915); insert into Enroll (cid, sid) values (78, 148); insert into Enroll (cid, sid) values (92, 915); insert into Enroll (cid, sid) values (12, 915); insert into Enroll (cid, sid) values (32, 428); insert into Enroll (cid, sid) values (41, 340); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Heads (did, iid) values (1, 6000); insert into Heads (did, iid) values (2, 5000); insert into Heads (did, iid) values (3, 7000); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 values (1, 'Computer Science', 6000, 78); values (2, 'Chemistry', 5000, 56);\cb1 \uc0\u8232 \cb3 values (3, 'English', 7000, 92);\cb1 \uc0\u8232 \cb3 values (4, 'Economics', 4000, 32); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 values (5, 'History', 4000, 46); values (6, 'Math', 1000, 22); values (7, 'Physics', 2000, 25); values (8, 'Sociology', 7000, 12); values (9, 'Astronomy', 1000, 41); values (10, 'Biology', 3000, 35); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Heads (did, iid) values (4, 4000); insert into Heads (did, iid) values (5, 4000); insert into Heads (did, iid) values (6, 1000); insert into Heads (did, iid) values (7, 2000); insert into Heads (did, iid) values (8, 7000); insert into Heads (did, iid) values (9, 1000); insert into Heads (did, iid) values (10, 3000); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Offer (cid, did) values (78, 1); insert into Offer (cid, did) values (56, 2); insert into Offer (cid, did) values (92, 3); insert into Offer (cid, did) values (32, 4); insert into Offer (cid, did) values (46, 5); insert into Offer (cid, did) values (22, 6); insert into Offer (cid, did) values (25, 7); insert into Offer (cid, did) values (12, 8); insert into Offer (cid, did) values (41, 9); insert into Offer (cid, did) values (35, 10); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Teaches(cid, iid) values (78, 6000); insert into Teaches(cid, iid) values (56, 5000); insert into Teaches(cid, iid) values (92, 7000); insert into Teaches(cid, iid) values (32, 4000); insert into Teaches(cid, iid) values (46, 4000); insert into Teaches(cid, iid) values (22, 1000); insert into Teaches(cid, iid) values (25, 2000); insert into Teaches(cid, iid) values (12, 7000); insert into Teaches(cid, iid) values (41, 1000); insert into Teaches(cid, iid) values (35, 3000); 
+\f1\fs24 \cb1 \
+
+\f0\fs29\fsmilli14667 \cb3 insert into Works_In (did, iid) values (1, 6000); insert into Works_In(did, iid) values (2, 5000); insert into Works_In(did, iid) values (3, 7000); insert into Works_In(did, iid) values (4, 4000); insert into Works_In(did, iid) values (5, 4000); insert into Works_In(did, iid) values (6, 1000); insert into Works_In(did, iid) values (7, 2000); insert into Works_In(did, iid) values (8, 7000); insert into Works_In(did, iid) values (9, 1000); insert into Works_In(did, iid) values (10, 3000); 
+\f1\fs24 \cb1 \
+}
